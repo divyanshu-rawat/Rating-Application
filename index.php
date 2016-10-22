@@ -5,6 +5,8 @@ require_once('classes/Rate.php');
 	$objRate = new Rate();
 	$posts = $objRate->getPosts();
 
+	
+
 ?>
 
 <!DOCTYPE HTML>
@@ -29,41 +31,7 @@ require_once('classes/Rate.php');
 	<![endif]-->
 </head>
 <body>
-	<div id = "wrapper">
-		<p><a  href="#" class="reset" > Reset </a></p>
-		<div id = "comments">
-			
-			<?php  if(!(empty($posts))) { 
-
-				foreach ($posts as $row) { ?>
-					
-					<div class = "comment">
-						<span class = "name">
-						
-							Posted By : <?php echo stripcslashes($row['full_name']); ?>
-							on 
-							<time datetime = <?php echo date('Y-m-d', strtotime($row['date'])); ?>
-											 <?php echo $row['date_formatted']; ?>
-							</time>
-
-						</span>
-
-						<p><?php echo stripcslashes($row['comment']); ?></p>
-						<?php echo $objRate-> buttonSet($row['id']); ?>
-
-					</div>
-
-				<?php } ?>
-
-
-			<?php } else { ?>
-
-				<p>There are currently no commnets !!</p>
-
-			<?php } ?>	
-		</div>
-
-	</div>
+	
 
 
 <!--<script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>-->

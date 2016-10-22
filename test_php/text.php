@@ -21,6 +21,22 @@
 // 	die("Connection Faild: " . $connection->connect_error);
 // }
 
+#prepare statement 
+
+
+// $stmt = $connection->prepare("INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)");
+
+
+// $stmt->bind_param(sss,$firstname,$lastname,$email);
+
+
+
+
+
+
+
+
+
 // echo "Connected succesfully !!";
 
 
@@ -35,23 +51,38 @@
 
 // The PDO Way !!!!
 
-try{
+// try{
 
-	$connection = new PDO("mysql:host = 'localhost';dbname = 'login_register'", "root", "");
-	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	// setAttribute(ATTRIBUTE, OPTION);
-    echo "Connected successfully";
+// 	$connection = new PDO("mysql:host = localhost;dbname = login_register", "root", "");
+// 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// 	// setAttribute(ATTRIBUTE, OPTION);
+//     echo "Connected successfully";
+
+
+//         $sql = "SELECT * FROM users";
+//         $statement= $connection->prepare($sql);
+//         $statement->execute();
+//         $result = $statement->fetchAll();
+//         print_r($result);
+
+
+// }
+
+// catch(PDOException $e)
+// {
+// 	    echo "Connection failed: " . $e->getMessage();
+// }
+
+try {
+    $dbh = new PDO('mysql:host=localhost;dbname=login_register', "root", "");
+    foreach($dbh->query('SELECT * from users') as $row) {
+        print_r($row);
+    }
+    $dbh = null;
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
 }
-
-catch(PDOException $e)
-{
-	    echo "Connection failed: " . $e->getMessage();
-}
-
-
-
-
-
 
 
 ?>

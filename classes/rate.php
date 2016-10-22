@@ -28,10 +28,10 @@ class Rate
     {
         try{
             
-            $this->objDb = new PDO("mysql:host = {$this-> _dbhost};dbname = {$this->_dbname}",$this->_dbuser,$this->_dbpass,
+            $this->objDb = new PDO("mysql:host={$this-> _dbhost};dbname={$this->_dbname}",$this->_dbuser,$this->_dbpass,
                                     array(PDO::ATTR_PERSISTENT => true));
 
-            $this->objDb->exec("SET CHARACTER SET utf8");
+            // $this->objDb->exec("SET CHARACTER SET utf8");
             
         }
         catch(PDOException $e)
@@ -52,12 +52,44 @@ class Rate
 
         $sql = "SELECT *,DATE_FORMAT(date,'%d/%m/%Y') AS date_formatted FROM {$this->_table_1} WHERE active = 1 ORDER BY date DESC";
 
-        $statement = $this->objDb->query($sql);
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        // $statement = $this->objDb->query($sql);
+        // return $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        $sql = "SELECT * FROM texts";
+        $statement= $this->objDb->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        print_r($result);
 
 
     }
     
+
+    public function getPost( $id = null)
+    {
+        if(!empty($id))
+        {
+            if($this->objDb === null)
+            {
+                $this->connect();
+            }
+
+            // $sql = "SELECT * FROM {$this->_table_1} WHERE id = "$id"";
+            // $query_result = mysqli_fetch_assoc($query);
+            // return $query_result;
+
+            $sql = "SELECT * FROM {$this->_table_1} WHERE id = '$id'";
+            $statement = $this->objDb->query($sql);
+            return $statement->fetch(PDO::FETCH_ASSOC);
+
+        }
+    }
+
+
+
+
+
+
 }
 
 
