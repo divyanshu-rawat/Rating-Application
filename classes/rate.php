@@ -52,7 +52,8 @@ class Rate
 
         $sql = "SELECT *,DATE_FORMAT(date,'%d/%m/%Y') AS date_formatted FROM {$this->_table_1} WHERE active = 1 ORDER BY date DESC";
 
-        $statement = $this->objDb->
+        $statement = $this->objDb->query($sql);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
 
 
     }
