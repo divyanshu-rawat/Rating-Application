@@ -2,8 +2,8 @@
 
 require_once('classes/Rate.php');
 
-$objRate = new Rate();
-$posts = $objRate->getPosts();
+	$objRate = new Rate();
+	$posts = $objRate->getPosts();
 
 ?>
 
