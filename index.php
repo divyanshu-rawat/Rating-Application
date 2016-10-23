@@ -52,7 +52,7 @@
 
 
 
-<script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-<script src="/js/core.js" type="text/javascript"></script>
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="js/core.js" type="text/javascript"></script>
 </body>
 </html>

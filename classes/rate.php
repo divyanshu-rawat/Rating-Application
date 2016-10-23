@@ -245,12 +245,12 @@ class Rate
                 return $out;
             } else {
                 $out  = '<div class="rateWrapper">';
-                $out .= '<span class="rate rateUp" data-item="';
+                $out .= '<span class="rate rateUp" data-item=""';
                 $out .= $id;
                 $out .= '"><span class="rateUpN">';
                 $out .= intval($post['up']);
                 $out .= '</span></span>';
-                $out .= '<span class="rate rateDown" data-item="';
+                $out .= '<span class="rate rateDown" data-item=""';
                 $out .= $id;
                 $out .= '"><span class="rateDownN">';
                 $out .= intval($post['down']);
