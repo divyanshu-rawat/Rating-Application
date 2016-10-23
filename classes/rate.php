@@ -114,7 +114,8 @@ class Rate
               return !empty($found) ? true : false;
         }
 
-        return true;
+        // return true;
+        return false;
     }
 
 
