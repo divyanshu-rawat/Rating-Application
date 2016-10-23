@@ -148,7 +148,17 @@ class Rate
     {
         if(!empty($id))
         {
-            if()
+            if($this->objDb == null)
+            {
+                $this->connect();
+            }
+
+            $sql = "UPDATE {$this->_table_1} SET ";
+            $sql .= $rate == 1 ? "up = up + 1 " : "down = down + 1";
+            $sql .= "WHERE id = ? ";
+            $statement = $this->objDb->prepare($sql);
+            return $statement->execute(array($id));
+            
         }
     }
 
