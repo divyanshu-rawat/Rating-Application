@@ -158,10 +158,25 @@ class Rate
             $sql .= "WHERE id = ? ";
             $statement = $this->objDb->prepare($sql);
             return $statement->execute(array($id));
-            
+
         }
     }
 
+    public function getAllByUser(){
+
+        if(!empty($this->_user))
+        {
+            if($this->objDb == null)
+            {
+                $this->connect();
+            }
+
+            $sql = "SELECT * FROM {$this->_table_2} WHERE user = ? ";
+            $statement = $this->objDb->prepare($sql);
+            $statement->execute(array($this->_user))
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
 
 }
 

@@ -3,8 +3,8 @@
 require_once('classes/Rate.php');
 
 	$objRate = new Rate();
-	$posts = $objRate->getPost(8);
-	print_r($posts);
+	$posts = $objRate->getPost(1);
+	
 
 ?>
 
