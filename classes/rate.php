@@ -62,7 +62,7 @@ class Rate
 
     public function getPost( $id = null)
     {
-        if(!empty($id) && !empty($this->_user))
+        if(!empty($id) )
         {
             if($this->objDb === null)
             {
@@ -81,9 +81,9 @@ class Rate
 
 
 
-        public function getByUser( $id = null)
+    public function getByUser( $id = null)
     {
-        if(!empty($id))
+        if(!empty($id) && !empty($this->_user))
         {
             if($this->objDb === null)
             {
@@ -101,12 +101,61 @@ class Rate
     }
 
 
+    public function isSubmitted($id = null)
+    {
+        if(!empty($id))
+        {
+            if($this->objDb == null)
+            {
+                $this->connect();
+            }
+
+              $found = $this->getByUser($id);
+              return !empty($found) ? true : false;
+        }
+
+        return true;
+    }
 
 
+    public function addRating($id = null,$rate = null)
+    {
+        if(!empty($id) && !empty($this->user))
+        {
+            if($this->objDb == null)
+            {
+                $this->connect();
+            }
 
+            $rate = $rate == 1?1:0; 
+            // if rate equals to 1 then it is equal to 1 otherwise it is zero !
+
+            $sql = "INSERT INTO {$this->_table_2} ('user','item','rate1')  VALUES (?,?,?)";
+            $statement = $this->objDb->prepare($sql);
+
+            if($statement->execute(array($this->user,$id,$rate)))
+            {
+                return $this->updateRating($id,$rate);
+            }
+
+            return false;
+
+        }   
+            return false;
+    }
+
+    public function updateRating($id = null,$rate = null)
+    {
+        if(!empty($id))
+        {
+            if()
+        }
+    }
 
 
 }
+
+
 
 
 
