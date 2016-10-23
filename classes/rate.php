@@ -201,6 +201,23 @@ class Rate
     }
 
     return false;
+
+
+    
+    
+    public function removeRating($id = null, $field = null) {
+
+        if (!empty($id) && !empty($field)) {
+
+            $sql = "UPDATE {$this->_table_1} SET {$field} = {$field -1} WHERE id = ?";
+            $statement = $this->objDb->prepare($sql);
+            return $statement->execute(array($id));
+        }
+    }
+
+
+
+
 }
 
 
