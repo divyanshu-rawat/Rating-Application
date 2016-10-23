@@ -3,9 +3,8 @@
 require_once('classes/Rate.php');
 
 	$objRate = new Rate();
-	$posts = $objRate->getPosts();
-
-	
+	$posts = $objRate->getPost(8);
+	print_r($posts);
 
 ?>
 
@@ -32,8 +31,6 @@ require_once('classes/Rate.php');
 </head>
 <body>
 	
-
-
 <!--<script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>-->
 <script src="/js/core.js" type="text/javascript"></script>
 </body>
