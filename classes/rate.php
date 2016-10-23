@@ -179,6 +179,28 @@ class Rate
         }
     }
 
+    public function reset(){
+        if(!empty($this->_user))
+        {
+            $list = $this->getAllByUser();
+        }
+
+        if(!empty($list))
+        {
+            foreach ($list as $row) {
+                $field = $row['rate'] == 1 ? 'up' : 'down';
+                $this->removeRating($row['item'],$field);
+            }
+
+            $sql = "DELETE FROM {$this->_table_2} WHERE user = ?";
+            $statement = $this->objDb->prepare($sql);
+            return $statement->execute(array($this->_user));
+
+        }
+        return false;
+    }
+
+    return false;
 }
 
 
