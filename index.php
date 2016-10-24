@@ -24,7 +24,7 @@
 
 <div id="wrapper">
 
-	<p><a href="#" class="reset">Reset</a></p>
+	<div class="reset"><a href="#" class="set" >Reset</a></div>
 	
 	<div id="comments">
 		
@@ -36,7 +36,7 @@
 					<span class="name">
 						Posted by <?php echo htmlentities(stripslashes($row['full_name'])); ?> on <time datetime="<?php echo date('Y-m-d', strtotime($row['date'])); ?>"><?php echo $row['date_formatted']; ?></time>
 					</span>
-					<p><?php echo htmlentities(stripslashes($row['comment'])); ?></p>
+					<p id = "my_style"><?php echo htmlentities(stripslashes($row['comment'])); ?></p>
 					<?php echo $objRate->buttonSet($row['id']); ?>
 				</div>
 			
