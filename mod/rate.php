@@ -1,16 +1,20 @@
 <?php
-if (!empty($_GET['type']) && !empty($_GET['item'])) {
+if (!empty($_POST['rate']) && !empty($_POST['item'])) {
 
-	$rate = $_GET['type'] == 'up' ? 1 : 0;
-	$item = $_GET['item'];
+	$rate = $_POST['rate'] == 'up' ? 1 : 0;
+	$item = (int)$_POST['item'];
 	
 	try {
 		
 		require_once('../classes/Rate.php');
 		$objRate = new Rate();
+
+			echo json_encode($objRate->isSubmitted($item));
 		
 		if (!$objRate->isSubmitted($item)) {
 			
+			// echo json_encode('divyanshu');
+
 			if ($objRate->addRating($item, $rate)) {
 				echo json_encode(array('error' => false));
 			} else {
@@ -27,4 +31,6 @@ if (!empty($_GET['type']) && !empty($_GET['item'])) {
 
 } else {
 	echo json_encode(array('error' => true, 'case' => 1));
+	// echo $_POST['rate'];
+	// echo $_POST['item'];
 }

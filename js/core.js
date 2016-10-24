@@ -18,11 +18,11 @@ var rateObject = {
 				
 		      $.ajax(test).done(function(data){
 
-		      		thisObj.children('span').html(parseInt(thisValue, 10) + 1);
+		      		thisObj.children('span').html(parseInt(1));
 					thisObj.parent('.rateWrapper').find('.rate').addClass('rateDone').removeClass('rate');
 					thisObj.addClass('active');
 
-		       console.log(2,data);   
+		       console.log(data);   
 
 		      }).fail(function(error){
 		      		console.log(1,error);

@@ -79,24 +79,22 @@ class Rate
 
 
 
-    public function getByUser( $id = null)
-    {
-        if(!empty($id) && !empty($this->_user))
-        {
-            if($this->objDb === null)
-            {
+    public function getByUser($id = null) {
+
+        if (!empty($id) && !empty($this->_user)) {
+            if ($this->objDb == null) {
                 $this->connect();
             }
-
-
-            $sql = "SELECT * FROM {$this->_table_2} WHERE id = '$id' AND item = '$this->_user' ";
-            $statement= $this->objDb->prepare($sql);
-            $statement->execute();
-            $result = $statement->fetchAll();
-            return $result;
-
+            $sql = "SELECT *
+                    FROM {$this->_table_2}
+                    WHERE user = ?
+                    AND   item = ?";
+            $statement = $this->objDb->prepare($sql);
+            $statement->execute(array($this->_user, $id));
+            return $statement->fetch(PDO::FETCH_ASSOC);
         }
     }
+    
 
 
     public function isSubmitted($id = null)
@@ -119,20 +117,20 @@ class Rate
 
     public function addRating($id = null,$rate = null)
     {
-        if(!empty($id) && !empty($this->user))
+        if(!empty($id) && !empty($this->_user))
         {
             if($this->objDb == null)
             {
                 $this->connect();
             }
 
-            $rate = $rate == 1?1:0; 
+            $rate = $rate == 1 ? 1 : 0; 
             // if rate equals to 1 then it is equal to 1 otherwise it is zero !
 
-            $sql = "INSERT INTO {$this->_table_2} ('user','item','rate')  VALUES (?,?,?)";
+            $sql = "INSERT INTO {$this->_table_2} (user,item,rate)  VALUES (?,?,?)";
             $statement = $this->objDb->prepare($sql);
 
-            if($statement->execute(array($this->user,$id,$rate)))
+            if($statement->execute(array($this->_user,$id,$rate)))
             {
                 return $this->updateRating($id,$rate);
             }
@@ -143,23 +141,19 @@ class Rate
             return false;
     }
 
-    public function updateRating($id = null,$rate = null)
-    {
-        if(!empty($id))
-        {
-            if($this->objDb == null)
-            {
+    public function updateRating($id = null, $rate = null) {
+        if (!empty($id)) {
+            if ($this->objDb == null) {
                 $this->connect();
             }
-
-            $sql = "UPDATE {$this->_table_1} SET ";
-            $sql .= $rate == 1 ? "up = up + 1 " : "down = down + 1";
-            $sql .= "WHERE id = ? ";
+            $sql  = "UPDATE `{$this->_table_1}` SET ";
+            $sql .= $rate == 1 ? " up = up + 1 " : " down = down + 1 ";
+            $sql .= "WHERE `id` = ?";
             $statement = $this->objDb->prepare($sql);
             return $statement->execute(array($id));
-
         }
-    }
+    }   
+    
 
     public function getAllByUser(){
 
@@ -217,14 +211,10 @@ class Rate
     }
 
 
-    public function buttonSet($id = null) {
-
+   public function buttonSet($id = null) {
         if (!empty($id) && !empty($this->_user)) {
-        
             $post = $this->getPost($id);
-        
             $found = $this->getByUser($id);
-        
             if (!empty($found)) {
                 $out  = '<div class="rateWrapper">';
                 $out .= '<span class="rateDone rateUp';
@@ -245,12 +235,12 @@ class Rate
                 return $out;
             } else {
                 $out  = '<div class="rateWrapper">';
-                $out .= '<span class="rate rateUp" data-item=""';
+                $out .= '<span class="rate rateUp" data-item="';
                 $out .= $id;
                 $out .= '"><span class="rateUpN">';
                 $out .= intval($post['up']);
                 $out .= '</span></span>';
-                $out .= '<span class="rate rateDown" data-item=""';
+                $out .= '<span class="rate rateDown" data-item="';
                 $out .= $id;
                 $out .= '"><span class="rateDownN">';
                 $out .= intval($post['down']);
