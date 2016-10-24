@@ -17,3 +17,21 @@ var rateObject = {
 			e.preventDefault();
 		});
 	},
+		reset : function(obj) {
+		obj.live('click', function(e) {
+			jQuery.getJSON(rateObject.urlReset, function(data) {
+				if (!data.error) {
+					location.reload();
+				}
+			});
+			e.preventDefault();
+		});
+	}
+};
+
+$(function() {
+	jQuery.ajaxSetup({ cache:false });
+	rateObject.rate($('.rate'));
+	rateObject.reset($('.reset'));
+});
+
