@@ -18,7 +18,7 @@ Now include this index.php (my php file name) at the end of the url
 
 I like to use mysql, so I suggest installing mysql. Once that is installed, execute the following commands don't worry it is inbuilt in Wamp server !.
 
-If you are using wamp you can try this. Just type use your_Database_name first.
+...If you are using wamp you can try this. Just type use your_Database_name first.
 
 Click your wamp server icon then look for MYSQL > MSQL Console then run it.
 
