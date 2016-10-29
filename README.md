@@ -2,13 +2,13 @@
 
 Installation I like to use Wamp server, so I suggest installing Wamp server . Once that is installed, execute the following instructions.
 
-⋅⋅* Run wamp server :exclamation:.
+* Run wamp server :exclamation:.
 
-⋅⋅* Make sure you have placed this entire application inside  :open_file_folder: c://wamp/www/rating_application.
+* Make sure you have placed this entire application inside  :open_file_folder: c://wamp/www/rating_application.
 
-⋅⋅* Left click on the wamp icon in system tray  It will display list of options Select “start all services”.
+* Left click on the wamp icon in system tray  It will display list of options Select “start all services”.
 
-⋅⋅* Then open your preffered browser and type localhost in address bar Hit enter :exclamation:  It will show the default page of wamp server.
+* Then open your preffered browser and type localhost in address bar Hit enter :exclamation:  It will show the default page of wamp server.
 
 Now include this index.php (my php file name) at the end of the url
 
