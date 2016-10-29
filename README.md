@@ -1,4 +1,4 @@
-# rating_application
+### rating_application
 
 Installation I like to use Wamp server, so I suggest installing Wamp server . Once that is installed, execute the following instructions.
 
@@ -12,9 +12,9 @@ Installation I like to use Wamp server, so I suggest installing Wamp server . On
 
 Now include this index.php (my php file name) at the end of the url
 
-# Setting Up The Database (.SQL File is present in dbase Folder)
+### Setting Up The Database (.SQL File is present in dbase Folder)
 
-# Method 1 :pencil2: Using Mysql Console !
+### Method 1 :pencil2: Using Mysql Console !
 
 I like to use mysql, so I suggest installing mysql. Once that is installed, execute the following commands don't worry it is inbuilt in Wamp server !.
 
@@ -34,13 +34,14 @@ mysql> use database_name;
 
 mysql> source location_of_your_file;
 
-# Method 2 :pencil2: 
+### Method 2 :pencil2: 
 
-⋅⋅* Left click on the wamp icon in system tray and run PHPMyAdmin (Access your database via PHPMyAdmin).
+* Left click on the wamp icon in system tray and run PHPMyAdmin (Access your database via PHPMyAdmin).
 
-⋅⋅* Go to the Import files tab
+* Go to the Import files tab
 
-⋅⋅* Click Browse, locate the SQL file on your computer (it is present in dbase folder), click Open, and then click Go.
+* Click Browse, locate the SQL file on your computer (it is present in dbase folder), click Open, and then click Go.
+
 
 I have also attached snapshot of application below !!!
 
