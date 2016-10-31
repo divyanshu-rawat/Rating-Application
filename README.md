@@ -1,6 +1,6 @@
-### Rating application :thumbsup:
+> :+1: Rating Application  :-1:  ImplementedUsing :sweat_smile:  Php,Core JS,J Query,Mysql,Ajax :exclamation:
 
-Installation I like to use Wamp server, so I suggest installing Wamp server . Once that is installed, execute the following instructions.
+### Installation I like to use Wamp server, so I suggest installing Wamp server . Once that is installed, execute the following instructions.
 
 * Run wamp server :exclamation:.
 
